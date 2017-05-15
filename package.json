@@ -1,0 +1,29 @@
+{
+  "name": "mean-app",
+  "version": "1.0.0",
+  "description": "MEAN stack application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NathanWang2/UdemyMEANProject.git"
+  },
+  "keywords": [
+    "mean"
+  ],
+  "author": "Nathan Wang & Source code from Udemy Course",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NathanWang2/UdemyMEANProject/issues"
+  },
+  "homepage": "https://github.com/NathanWang2/UdemyMEANProject#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "mocha": "^3.3.0"
+  }
+}
