@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var path = require("path");
+var bodyParser = require("body-parser");
 
 var route = require("./api/routes");
 
@@ -12,8 +13,9 @@ app.use(function(req, res, next){
     console.log(req.method, req.url);
     next();
 });
-
 app.use(express.static(path.join(__dirname, "public")));
+// want to make sure that the body parser runs before the api route
+app.use(bodyParser.urlencoded({extended : false}));
 
 app.use("/api", route);
 
