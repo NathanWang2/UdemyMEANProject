@@ -4,14 +4,16 @@ var path = require("path");
 
 app.set('port',3000);
 
-// req = response and res = respond
-app.get("/", function(req, res){
-    console.log("Homepage");
-    res
-    .status(200)
-    .sendFile(path.join(__dirname, 'public', "index.html"));
+// the /css means that it will only print request from this folder
+// app.use("/css",function(req, res, next)
+app.use(function(req, res, next){
+    console.log(req.method, req.url);
+    next();
 });
 
+app.use(express.static(path.join(__dirname, "public")));
+
+// req = response and res = respond
 // Sending Json type info
 app.get("/json", function(req, res){
     console.log("Get Json");
