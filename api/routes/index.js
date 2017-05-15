@@ -3,7 +3,11 @@ var router = express.Router();
 var ctrlHotel = require("../controllers/hotels.controllers.js");
 
 router
-    .route("/json")
+    .route("/hotels")
     .get(ctrlHotel.hotelsGetAll);
+
+router
+    .route("/hotels/:hotelId")
+    .get(ctrlHotel.hotelsGetOne);
 
 module.exports = router;
