@@ -13,7 +13,7 @@ mongoose.connection.on("error", function(err){
     console.log("Mongoose error: " + err);
 });
 
-// For Linux based systems
+// For Unix based systems
 process.on('SIGNINT', function(){
     mongoose.connection.close(function(){
         console.log("Mongoose disconnected through app termination (SIGNINT)");
@@ -34,3 +34,6 @@ process.once('SIGUSR2', function(){
         process.kill(process.pid, 'SIGUSR2');
     });
 });
+// End Unix based systems
+// Bring in Schema as a model
+require('./hotels.model.js');
