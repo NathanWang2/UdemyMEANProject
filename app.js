@@ -1,4 +1,4 @@
-var dbconnection = require("./api/data/dbconnection.js").open();
+var dbconnection = require("./api/data/db.js"); // Changed to mongoose connect
 var express = require("express");
 var app = express();
 var path = require("path");
