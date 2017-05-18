@@ -5,7 +5,7 @@ var path = require("path");
 var bodyParser = require("body-parser");
 
 
-var route = require("./api/routes");
+var routes = require("./api/routes");
 
 app.set('port',3000);
 
@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // want to make sure that the body parser runs before the api route
 app.use(bodyParser.urlencoded({extended : false}));
 
-app.use("/api", route);
+app.use("/api", routes);
 
 // This validates that the listen is working properly
 var server = app.listen(app.get("port"), function(){
