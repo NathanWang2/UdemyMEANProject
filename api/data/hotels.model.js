@@ -48,7 +48,7 @@ var hotelSchema = new mongoose.Schema({
     description: String,
     photos: [String],
     currency: String,
-    review: [reviewSchema], // Refrencing the reviewSchema
+    reviews: [reviewSchema], // Refrencing the reviewSchema
     rooms: [roomSchema],
     location: {
         address: String,
