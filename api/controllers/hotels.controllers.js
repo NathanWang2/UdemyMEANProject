@@ -1,11 +1,43 @@
 var mongoose = require("mongoose");
 var Hotel = mongoose.model("Hotel");
 
+var runGeoQuery = function(req, res){
+    var lng = parseFloat(req.query.lng);
+    var lat = parseFloat(req.query.lat);
+    // Now the geo json point
+    // Must be lng then lat.
+    var point = {
+        type: "Point",
+        coordinates: [lng, lat]
+    };
+
+    var geoOptions = {
+        spherical: true, // Tells to calculate as a sphere
+        maxDistance: 2000, // This is in meters
+        num: 5   // # of returned docs
+    };
+
+    Hotel
+        .geoNear(point, geoOptions, function(err, results, stats){
+            console.log("Geo results", results);
+            console.log("Geo stats", stats);
+            res
+                .status(200)
+                .json(results);
+        });
+};
+
 module.exports.hotelsGetAll = function(req, res){
 
     // default values
         var offset = 0;
         var count = 5;
+
+        // if the query exists and there is a latitude and a longitude
+        if (req.query && req.query.lat && req.query.lng){
+            runGeoQuery(req, res);
+            return; // Stops code if you hit this spot
+        }
 
     // If a query property exists and...
     // If it does exist, then check if there is an offset and set the data
