@@ -6,6 +6,35 @@ var runGeoQuery = function(req, res){
     var lat = parseFloat(req.query.lat);
     // Now the geo json point
     // Must be lng then lat.
+    if (isNaN(lng) || isNaN(lat)){
+        res
+            .status(400)
+            .json({
+                "message" : "If supplied in querystring latitude and longitude "
+                + "should be numbers"
+            })
+        return;
+    };
+
+    if (lat.abs() < 90){
+        res
+            .status(400)
+            .json({
+                "message" : "Latitude is out of range"
+            });
+        return;
+    };
+
+    if (lng.abs() < 180){
+        res
+            .status(400)
+            .json({
+                "message" : "Longitude is out of range"
+            });
+        return;
+    };
+
+
     var point = {
         type: "Point",
         coordinates: [lng, lat]
@@ -14,16 +43,24 @@ var runGeoQuery = function(req, res){
     var geoOptions = {
         spherical: true, // Tells to calculate as a sphere
         maxDistance: 2000, // This is in meters
-        num: 5   // # of returned docs
+        num: 20   // # of returned docs
     };
 
     Hotel
         .geoNear(point, geoOptions, function(err, results, stats){
             console.log("Geo results", results);
             console.log("Geo stats", stats);
-            res
-                .status(200)
-                .json(results);
+            if (err){
+                console.log("Error finding hotels near the area");
+                res
+                    .status(500)
+                    .json(err);
+            } else{
+                res
+                    .status(200)
+                    .json(results);
+            }
+
         });
 };
 
