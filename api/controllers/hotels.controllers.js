@@ -163,29 +163,44 @@ module.exports.hotelsGetOne = function(req, res){
     });
 };
 
+// by default using splitwith an empty string will create an array will create
+// an array with one entry. This if function ensures that we will only have an
+// array with entries if we have information in the strings.
+var _splitArray = function(input) {
+  var output;
+  if (input && input.length > 0) {
+    output = input.split(";"); // seperated by ; in the request(Postman)
+  } else {
+    output = [];
+  }
+  return output;
+};
+
 module.exports.hotelsAddOne = function(req, res){
-    var db = dbconn.get();
-    var collection = db.collection('hotels'); // get the collection from db
-    var newHotel;
-    // Error trapping
-    // Require a name and star
-    if (req.body && req.body.name && req.body.stars){
-        newHotel = req.body;
-        newHotel.stars = parseInt(req.body.stars, 10);
-        collection
-            .insertOne(newHotel, function(err, response){
-                console.log(response);
-                console.log(response.ops);
+    Hotel
+        .create({
+            name : req.body.name,
+            description : req.body.description,
+            stars : parseInt(req.body.stars,10),
+            services : _splitArray(req.body.services),
+            photos : _splitArray(req.body.photos),
+            currency : req.body.currency,
+            location : {
+              address : req.body.address,
+              coordinates : [parseFloat(req.body.lng), parseFloat(req.body.lat)]
+            }
+        },function(err, newhotel){
+            if (err){
+                console.log("Error creating hotel");
                 res
-                    .status(201) // code for insertOne
-                    .json(response.ops);
-            })
+                    .status(400)
+                    .json(err);
+            } else {
+                console.log("Created new entry in Hotel ", newhotel);
+                res
+                    .status(201) // Resource has been created
+                    .json(newhotel);
+            }
+        });
 
-
-    } else {
-        console.log("Failed to add new hotel");
-        res
-            .status(400)
-            .json({message : "Required data is missing from request"});
-    }
 };

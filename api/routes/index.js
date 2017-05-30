@@ -6,21 +6,19 @@ var ctrlReviews = require("../controllers/reviews.controllers.js");
 
 router
     .route("/hotels")
-    .get(ctrlHotel.hotelsGetAll);
+    .get(ctrlHotel.hotelsGetAll)
+    .post(ctrlHotel.hotelsAddOne);
 
 router
     .route("/hotels/:hotelId")
     .get(ctrlHotel.hotelsGetOne);
 
-router
-    .route("/hotels/new")
-    .post(ctrlHotel.hotelsAddOne);
-
 // Review Routes
 // This layout is follows
 router
     .route("/hotels/:hotelId/reviews")
-    .get(ctrlReviews.reviewsGetAll);
+    .get(ctrlReviews.reviewsGetAll)
+    .post(ctrlReviews.reviewsAddOne);
 
 router
     .route("/hotels/:hotelId/reviews/:reviewId")
