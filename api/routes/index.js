@@ -11,7 +11,8 @@ router
 
 router
     .route("/hotels/:hotelId")
-    .get(ctrlHotel.hotelsGetOne);
+    .get(ctrlHotel.hotelsGetOne)
+    .put(ctrlHotel.hotelsUpdateOne);
 
 // Review Routes
 // This layout is follows
@@ -22,6 +23,7 @@ router
 
 router
     .route("/hotels/:hotelId/reviews/:reviewId")
-    .get(ctrlReviews.reviewsGetOne);
+    .get(ctrlReviews.reviewsGetOne)
+    .put(ctrlReviews.reviewsUpdateOne);
 
 module.exports = router;
