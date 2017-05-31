@@ -261,4 +261,26 @@ module.exports.hotelsUpdateOne = function(req, res){
                 });
             }
     });
-};
+}; // end HotelUpdate one
+
+module.exports.hotelsDeleteOne = function(req,res){
+    var hotelId = req.params.hotelId;
+    console.log("Get the hotelID", hotelId);
+
+    Hotel
+        .findByIdAndRemove(hotelId)
+        .exec(function(err, hotel){
+            if (err){
+                res
+                    .status(404)
+                    .json(err);
+            }
+            // If the document is not found (Does not exist)
+            else{
+                console.log("Hotel was deleted, id: ", hotelId);
+                res
+                    .status(204)
+                    .json(err);
+            }
+        }); // End exec
+}; // End hotelsDeleteOne
