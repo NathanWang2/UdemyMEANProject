@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="meanhotel">
 <head>
     <title> Homepage </title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/custom.css" rel="stylesheet" />
 </head>
 <body>
-    <h1> Hello Everyone </h1>
+    <div ng-view></div>
 
 
     <footer class="footer">
@@ -23,5 +23,10 @@
 
 
     <script src="jquery/jquery-3.2.1.min.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="angular-app/app.js"></script>
+    <script src="angular-app/hotel-list/hotel-list-ctrl.js"></script>
+    <!-- public already specified as static file in app.js-->
 </body>
 </html>
