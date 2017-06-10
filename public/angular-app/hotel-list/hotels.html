@@ -2,5 +2,7 @@
 
 
 <ul>
-    <li ng-repeat="hotels in vm.hotels">{{ hotels.name }}</li>
+    <li ng-repeat="hotels in vm.hotels">
+        <a ng-href="#!/hotel/{{hotels._id}}">{{ hotels.name }}</a></li>
+        <!-- YOU HAVE TO ADD THE ! TO MAKE THE URL WORK-->
 </ul>
