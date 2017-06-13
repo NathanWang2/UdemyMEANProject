@@ -20,7 +20,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
 
 // want to make sure that the body parser runs before the api route
+// urlencoded means that it can only read in url recorded format
 app.use(bodyParser.urlencoded({extended : false}));
+// telling api that it should natively understand json data
+app.use(bodyParser.json());
 
 app.use("/api", routes);
 

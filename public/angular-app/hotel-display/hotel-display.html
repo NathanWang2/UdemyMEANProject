@@ -1,2 +1,21 @@
 <h1>{{vm.hotel.name}} - <hotel-rating stars="vm.stars"></hotel-rating> </h1>
 <p>{{vm.hotel.description}}</p>
+
+<form name="vm.reviewForm" ng-submit="vm.addReview()">
+    Name: <input type="text" name="name" required ng-minlength="2" ng-model="vm.name">
+    <div ng-show="vm.reviewForm.name.$dirty && vm.reviewForm.name.$invalid && vm.isSubmitted">
+        <p> Name should be 2 or more characters long </p>
+    </div>
+
+    Rating: <input type="text" name="rating" required ng-pattern="/^[0-5]{1}/" ng-model="vm.rating">
+    <div ng-show="vm.reviewForm.rating.$dirty && vm.reviewForm.rating.$invalid && vm.isSubmitted">
+        <p> Rating should be a number between 1 and 5 </p>
+    </div>
+
+    Review: <input type="text" name="review" required ng-model="vm.review">
+    <div ng-show="vm.reviewForm.review.$dirty && vm.reviewForm.review.$invalid && vm.isSubmitted">
+        <p> Review is required </P>
+    </div>
+
+    <button type="submit" class="btn">Submit</button>
+</form>
