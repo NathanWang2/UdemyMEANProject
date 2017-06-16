@@ -234,7 +234,7 @@ module.exports.reviewsDeleteOne = function(req,res){
                     .status(response.status)
                     .json(response.message);
             } else {
-                
+
                 hotel.reviews.id(reviewId).remove();
                 hotel.save(function(err, reviewUpdated){
                     if (err){

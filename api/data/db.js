@@ -35,5 +35,7 @@ process.once('SIGUSR2', function(){
     });
 });
 // End Unix based systems
+
 // Bring in Schema as a model
 require('./hotels.model.js');
+require('./users.model.js');
