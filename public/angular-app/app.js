@@ -12,5 +12,10 @@ function config($routeProvider){
             templateUrl: 'angular-app/hotel-display/hotel-display.html',
             controller: HotelDisplayCtrl,
             controllerAs: 'vm'
+        })
+        .when('/register', {
+            templateUrl:'angular-app/register/register.html',
+            controller: RegisterCtrl,
+            controllerAs: 'vm'
         });
 }
