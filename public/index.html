@@ -6,7 +6,11 @@
     <link href="css/custom.css" rel="stylesheet" />
 </head>
 <body>
-    <div ng-view></div>
+
+<mean-nav></mean-nav>
+    <div class="container">
+        <div ng-view></div>
+    </div>
 
 
     <footer class="footer">
@@ -31,6 +35,10 @@
     <script src="angular-app/hotel-data-factory/hotel-data-factory.js"></script>
     <script src="angular-app/hotel-rating/hotel-rating-directive.js"></script>
     <script src="angular-app/register/register-ctrl.js"></script>
+    <script src="angular-app/nav-directive/nav-directive.js"></script>
+    <script src="angular-app/login/login-ctrl.js"></script>
+    <script src="angular-app/auth/auth-factory.js"></script>
+    <script src="angular-app/auth/auth-intercept.js"></script>
     <!-- public already specified as static file in app.js-->
 </body>
 </html>
