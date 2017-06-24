@@ -8,10 +8,16 @@
     /* Margin bottom by footer height */
     margin-bottom: 90px;
   }
+<<<<<<< HEAD
 
     body >.container {
     padding: 60px 0 0 0;
     }
+=======
+  body > .container {
+      padding: 60px 0 0 0;
+  }
+>>>>>>> 4e85dc675b60ad56ea5f287d878635c2ffa8acf0
   .padded {
     padding-top: 30px
   }

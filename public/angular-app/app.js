@@ -7,9 +7,12 @@ function config($routeProvider, $httpProvider){
     $routeProvider
         .when('/', {
             templateUrl: 'angular-app/main/main.html',
+<<<<<<< HEAD
             access: {
                 restricted: false
             }
+=======
+>>>>>>> 4e85dc675b60ad56ea5f287d878635c2ffa8acf0
         })
         .when ('/hotels', {
             templateUrl: 'angular-app/hotel-list/hotels.html',
@@ -30,6 +33,7 @@ function config($routeProvider, $httpProvider){
         .when('/register', {
             templateUrl:'angular-app/register/register.html',
             controller: RegisterCtrl,
+<<<<<<< HEAD
             controllerAs: 'vm',
             access: {
                 restricted: false
@@ -43,7 +47,14 @@ function config($routeProvider, $httpProvider){
         })
         .otherwise({
             redirectTo: '/'
+=======
+            controllerAs: 'vm'
+        })
+        .otherwise({
+            redirect: '/'
+>>>>>>> 4e85dc675b60ad56ea5f287d878635c2ffa8acf0
         });
+
 }
 
 function run($rootScope, $location, $window, AuthFactory){

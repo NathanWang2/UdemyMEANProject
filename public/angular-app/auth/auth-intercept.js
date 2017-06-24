@@ -8,7 +8,11 @@ function AuthInterceptor($window, AuthFactory, $q, $location){
     }
 
     function request(config){
+<<<<<<< HEAD
         config.headers = config.headers || {};
+=======
+        config.headers = congif.headers || {};
+>>>>>>> 4e85dc675b60ad56ea5f287d878635c2ffa8acf0
         if ($window.sessionStorage.token){ // This is to check if there is a token stored
             config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
         }
