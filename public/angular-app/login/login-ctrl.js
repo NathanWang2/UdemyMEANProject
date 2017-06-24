@@ -37,6 +37,8 @@ function loginctrl($http, $location, $window, AuthFactory, jwtHelper){
     vm.logout = function(){
         AuthFactory.isLoggedIn = false;
         delete $window.sessionStorage.token;
+        vm.username='';
+        vm.password='';
         $location.path('/');
     }
 
