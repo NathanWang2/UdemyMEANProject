@@ -1,8 +1,14 @@
 <h1>{{vm.hotel.name}} - <hotel-rating stars="vm.stars"></hotel-rating> </h1>
+<p><small>{{ vm.hotel.location.address }}</small></p>
 <p>{{vm.hotel.description}}</p>
 
+<h2> Reviews </h2>
+<ul>
+  <li ng-repeat="review in vm.hotel.reviews"> <strong>{{ review.name }} says:</strong> {{ review.review }}</li>
+</ul>
+
 <form ng-if='vm.isLoggedIn()' name="vm.reviewForm" ng-submit="vm.addReview()">
-    
+
     Rating: <input type="text" name="rating" required ng-pattern="/^[0-5]{1}/" ng-model="vm.rating">
     <div ng-show="vm.reviewForm.rating.$dirty && vm.reviewForm.rating.$invalid && vm.isSubmitted">
         <p> Rating should be a number between 1 and 5 </p>
